@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Artists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Gravatar url</th>
+      <th>Description</th>
+      <th>Skill</th>
+      <th>Experience</th>
+      <th>Facebook url</th>
+      <th>Twitter url</th>
+      <th>Contact no</th>
+      <th>Address</th>
+      <th>Country</th>
+      <th>State</th>
+      <th>City</th>
+      <th>Availability</th>
+      <th>Youtube url</th>
+      <th>Behance url</th>
+      <th>Facebook page</th>
+      <th>Blog url</th>
+      <th>Website url</th>
+      <th>Other url</th>
+      <th>Motto line</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr>
+        <td><%= artist.name %></td>
+        <td><%= artist.email %></td>
+        <td><%= artist.password %></td>
+        <td><%= artist.gravatar_url %></td>
+        <td><%= artist.description %></td>
+        <td><%= artist.skill %></td>
+        <td><%= artist.experience %></td>
+        <td><%= artist.facebook_url %></td>
+        <td><%= artist.twitter_url %></td>
+        <td><%= artist.contact_no %></td>
+        <td><%= artist.address %></td>
+        <td><%= artist.country %></td>
+        <td><%= artist.state %></td>
+        <td><%= artist.city %></td>
+        <td><%= artist.availability %></td>
+        <td><%= artist.youtube_url %></td>
+        <td><%= artist.behance_url %></td>
+        <td><%= artist.facebook_page %></td>
+        <td><%= artist.blog_url %></td>
+        <td><%= artist.website_url %></td>
+        <td><%= artist.other_url %></td>
+        <td><%= artist.motto_line %></td>
+        <td><%= link_to 'Show', artist %></td>
+        <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
+        <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Artist', new_artist_path %>
