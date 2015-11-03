@@ -6,6 +6,10 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+Application is being developed in the ruby on rails _4.2.2_ version and
+the environment has been properly set up. 
+
+Gems has been installed. 
 
 * System dependencies
 
