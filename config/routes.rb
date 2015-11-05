@@ -2,9 +2,13 @@ Rails.application.routes.draw do
   
   
 
+  get 'artists/new'
+
   root 'static_pages#home'
   
   get 'signup_users' => 'users#new' 
+  
+  get 'signup_artists' => 'artists#new'
   
   get 'help' => 'static_pages#help'
 
