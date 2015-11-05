@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
+  
+  
 
-  get 'static_pages/help'
+  root 'static_pages#home'
+  
+  get 'signup_users' => 'users#new' 
+  
+  get 'help' => 'static_pages#help'
 
-  get 'static_pages/contact_us'
+  get 'contact_us' => 'static_pages#contact_us'
 
-  get 'static_pages/about'
+  get 'about' => 'static_pages#about'
 
-  get 'static_pages/advice'
+  get 'advice' => 'static_pages#advice'
 
-  get 'static_pages/search_result'
+  get 'search_results' => 'static_pages#search_result'
 
   resources :artists
   resources :users
@@ -17,7 +22,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
+  
   
   resources :users
   resources :artists
