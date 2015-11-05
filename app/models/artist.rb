@@ -1,7 +1,15 @@
 class Artist < ActiveRecord::Base
+    before_save { self.email = email.downcase }
     validates :name, length: { maximum: 100 } , presence: true
-    validates :email, length: { maximum: 100 } , presence: true
-    validates :password, length: { maximum: 100 } , presence: true
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+    validates :email, length: { maximum: 250 } , presence: true},
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+
+    #validates :password, length: { maximum: 100 } , presence: true
+    has_secure_password
+    validates :password, presence: true, length: { minimum: 6 }
     validates :gravatar_url, length: { maximum: 2083 }
     validates :description, length: { maximum: 200 } , presence: true
     
