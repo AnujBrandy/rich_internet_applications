@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   
   
 
+  get 'sessionartists/new'
+
+  get 'sessions/new'
+
   get 'artists/new'
 
   root 'static_pages#home'
@@ -19,7 +23,14 @@ Rails.application.routes.draw do
   get 'advice' => 'static_pages#advice'
 
   get 'search_results' => 'static_pages#search_result'
-
+  
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+  
+  get    'login_artist'   => 'sessionartists#new'
+  post   'login_artist'   => 'sessionartists#create'
+  delete 'logout_artist'  => 'sessionartists#destroy'
   resources :artists
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

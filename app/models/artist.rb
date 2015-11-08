@@ -1,4 +1,6 @@
 class Artist < ActiveRecord::Base
+    attr_accessor :remember_token
+    
     before_save { self.email = email.downcase }
     validates :name, length: { maximum: 100 } , presence: true
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -14,7 +16,7 @@ class Artist < ActiveRecord::Base
     validates :description, length: { maximum: 200 } 
     
     validates :skill, length: { maximum: 200 } 
-    validates :experience, length: { maximum: 10 }
+    validates :experience, length: { maximum: 200 }
  
     validates :facebook_url, length: { maximum: 2083 }
     validates :twitter_url, length: { maximum: 2083 }
@@ -32,4 +34,22 @@ class Artist < ActiveRecord::Base
     validates :other_url, length: { maximum: 2083 }
     validates :motto_line, length: { maximum: 200 }
     
+    # Returns the hash digest of the given string.
+  def Artist.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+  
+  # Returns a random token.
+  def Artist.new_token
+    SecureRandom.urlsafe_base64
+  end
+  
+  # Remembers a user in the database for use in persistent sessions.
+  #def remember
+   # self.remember_token = Artist.new_token
+    #update_attribute(:remember_digest, Artist.digest(remember_token))
+  #end
+  
 end
